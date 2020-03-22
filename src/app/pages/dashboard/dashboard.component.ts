@@ -11,7 +11,7 @@ import covid from 'novelcovid';
 })
 export class DashboardComponent implements OnInit {
 
-  data: any;
+  update: any;
   // currentUpdate: Latestupdate[];
   currentUpdate: any;
   // currentUpdate: {};
@@ -39,8 +39,10 @@ export class DashboardComponent implements OnInit {
 
     console.log('test naveen ' + this.currentUpdate);*/
 
-    this.data = covid.all()
-      .then((data) => console.log('naveen' + data))
+    covid.all()
+      .then((data) => {
+        this.update = data;
+      })
       .catch((err) => console.error(err));
 
   }
