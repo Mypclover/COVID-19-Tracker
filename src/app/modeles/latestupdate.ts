@@ -6,8 +6,16 @@ export class Latestupdate {
   deaths: number;
   recovered: number;*/
 
-  cases: number;
-  deaths: number;
-  recovered: number;
-  updated: number;
+  cases:      number;
+  deaths:     number;
+  recovered:  number;
+  updated:    number;
+
+
+  constructor(cases, deaths, recovered, updated) {
+    this.cases = cases;
+    this.deaths = deaths;
+    this.recovered = recovered;
+    this.updated = updated;
+  }
 }

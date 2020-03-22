@@ -21,8 +21,8 @@ export class CovidApiService {
     return this.http.get<any[]>(this.baseUrl + 'latest');
   }*/
 
-  getLatestUpdate(): Observable<Latestupdate> {
-    return this.http.get<Latestupdate>(this.baseUrl + 'all');
+  getLatestUpdate(): Observable<Latestupdate[]> {
+    return this.http.get<Latestupdate[]>(this.baseUrl + 'all');
   }
 
  /* getIndiaStatus(): Observable<IndiaStatus> {
