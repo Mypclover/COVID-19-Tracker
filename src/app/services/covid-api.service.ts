@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 // Model
 import {Latestupdate} from '../modeles/latestupdate';
 import {IndiaStatus} from '../modeles/india-status';
+import {Globalupdate} from '../modeles/globalupdate';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class CovidApiService {
 
   getIndiaStatus() {
     return this.http.get('https://corona.lmao.ninja/countries/india');
+  }
+
+  getGlobalStatus(): Observable<Globalupdate[]> {
+    return this.http.get<Globalupdate[]>(this.baseUrl + 'countries');
   }
 }

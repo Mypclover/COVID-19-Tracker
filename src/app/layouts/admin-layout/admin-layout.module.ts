@@ -10,6 +10,7 @@ import {AdminLayoutRoutes} from './admin-layout.routing';
 import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CovidApiService} from '../../services/covid-api.service';
+import {DataTablesModule} from 'angular-datatables';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -20,7 +21,8 @@ import {CovidApiService} from '../../services/covid-api.service';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    DataTablesModule
   ],
   declarations: [
     DashboardComponent,

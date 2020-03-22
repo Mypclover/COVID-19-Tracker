@@ -11,6 +11,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppRoutingModule} from './app.routing';
 import {ComponentsModule} from './components/components.module';
+import {CovidApiService} from './services/covid-api.service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import {ComponentsModule} from './components/components.module';
     AppComponent,
     AdminLayoutComponent,
   ],
-  providers: [],
+  providers: [CovidApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
