@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/protect', title: 'How To Protect',  icon:'ni-favourite-28 text-red', class: '' },
     { path: '/help-line', title: 'Help Line',  icon:'ni-planet text-blue', class: '' },
     { path: '/test-center', title: 'Test centers',  icon:'ni-pin-3 text-orange', class: '' },
-    { path: '/about-us', title: 'About Us',  icon:'ni-single-02 text-yellow', class: '' },
+    // { path: '/about-us', title: 'About Us',  icon:'ni-single-02 text-yellow', class: '' },
 ];
 
 @Component({
