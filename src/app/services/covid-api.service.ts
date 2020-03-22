@@ -1,7 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+
+// Model
 import {Latestupdate} from '../modeles/latestupdate';
+import {IndiaStatus} from '../modeles/india-status';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +19,17 @@ export class CovidApiService {
   /*getLatestUpdate(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl + 'latest');
   }*/
+
   getLatestUpdate(): Observable<Latestupdate> {
     return this.http.get<Latestupdate>(this.baseUrl + 'all');
   }
 
-  getIndiaStatus(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl + 'all');
+ /* getIndiaStatus(): Observable<IndiaStatus> {
+    return this.http.get<IndiaStatus>(this.baseUrl + 'countries/india');
+  }*/
+
+
+  getIndiaStatus() {
+    return this.http.get('https://corona.lmao.ninja/countries/india');
   }
-
-
 }

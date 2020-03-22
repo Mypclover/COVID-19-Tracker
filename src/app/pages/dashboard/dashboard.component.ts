@@ -12,9 +12,10 @@ import covid from 'novelcovid';
 export class DashboardComponent implements OnInit {
 
   update: any;
+  indiastatus: any;
   // currentUpdate: Latestupdate[];
   currentUpdate: any;
-  // currentUpdate: {};
+  lastupdate: any;
 
   constructor(private apiService: CovidApiService) {
   }
@@ -28,7 +29,7 @@ export class DashboardComponent implements OnInit {
 
     this.apiService.getLatestUpdate().subscribe((res: Latestupdate) => {
       this.currentUpdate = res;
-
+      this.lastupdate = new Date(this.currentUpdate.updated);
       console.log('latest Update' + this.currentUpdate);
     });
 
@@ -39,11 +40,24 @@ export class DashboardComponent implements OnInit {
 
     console.log('test naveen ' + this.currentUpdate);*/
 
-    covid.all()
+    /*covid.all()
       .then((data) => {
         this.update = data;
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err));*/
+
+
+   /* covid.countries('india')
+      .then((data) => {
+        this.country = data;
+        console.log('naveen' + JSON.stringify(this.country));
+      })
+      .catch((err) => console.error(err));*/
+
+    this.apiService.getIndiaStatus().subscribe((country: {}) => {
+      this.indiastatus = country;
+    });
+
 
   }
 
