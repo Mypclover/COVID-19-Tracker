@@ -8,8 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-    "deploy": "ng build --prod --base-href https://mypclover.github.io/COVID-19-Tracker/ && angular-cli-ghpages --branch gh-pages"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
   },
   "private": true,
   "dependencies": {
@@ -49,7 +48,6 @@
     "@types/jasminewd2": "2.0.8",
     "@types/jquery": "^3.3.33",
     "@types/node": "13.7.7",
-    "angular-cli-ghpages": "^0.6.2",
     "codelyzer": "5.2.1",
     "jasmine-core": "3.5.0",
     "jasmine-spec-reporter": "4.2.1",
