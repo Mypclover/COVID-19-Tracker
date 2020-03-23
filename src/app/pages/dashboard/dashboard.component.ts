@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
   globalupdate: Globalupdate[] = [];
 
-  test = [
+  /*test = [
 
     {
       'country': 'China',
@@ -97,7 +97,7 @@ export class DashboardComponent implements OnInit {
       'critical': 1525,
       'casesPerOneMillion': 222
     },
-  ];
+  ];*/
 
   dtOptions: DataTables.Settings = {};
 
