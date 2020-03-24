@@ -13,7 +13,8 @@ import {CovidApiService} from '../../services/covid-api.service';
 import {DataTablesModule} from 'angular-datatables';
 import {HelplineComponent} from '../../pages/helpline/helpline.component';
 import {TestCentersComponent} from '../../pages/test-centers/test-centers.component';
-import {AboutUsComponent} from '../../pages/about-us/about-us.component';
+import {HowToProtectComponent} from '../../pages/how-to-protect/how-to-protect.component';
+import {IndiaStatsComponent} from '../../pages/india-stats/india-stats.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -31,7 +32,8 @@ import {AboutUsComponent} from '../../pages/about-us/about-us.component';
     DashboardComponent,
     HelplineComponent,
     TestCentersComponent,
-    AboutUsComponent
+    HowToProtectComponent,
+    IndiaStatsComponent
   ],
   providers: [CovidApiService]
 })

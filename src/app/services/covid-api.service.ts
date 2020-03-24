@@ -31,7 +31,10 @@ export class CovidApiService {
 
 
   getIndiaStatus() {
-    return this.http.get('https://corona.lmao.ninja/countries/india');
+    return this.http.get('https://corona.lmao.ninja/countries/india?strict=true');
+  }
+  getIndiastateStatus() {
+    return this.http.get('https://ameerthehacker.github.io/corona-india-status/covid19-indian-states.json');
   }
 
   getGlobalStatus(): Observable<Globalupdate[]> {

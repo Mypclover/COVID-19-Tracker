@@ -1,0 +1,56 @@
+.flag{
+
+  width: 70px;
+}
+
+
+
+.who-img {
+  width: 352px !important;
+/*//352px*/
+}
+
+::ng-deep input {
+  outline: none;
+  border: 1px solid #bbb;
+  border-radius: 30px;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+
+.table-responsive {
+  padding: 20px;
+}
+
+
+::ng-deep .paginate_button{
+  z-index: 1;
+  color: #fff;
+  border-color: #5e72e4;
+  background-color: #5e72e4;
+  border-radius: 50%!important;
+}
+
+.paginate_button.current:hover{
+
+}
+
+::ng-deep .dataTables_wrapper .dataTables_paginate .paginate_button{
+  color: #FFFFFF !important;
+}
+
+::ng-deep .dataTables_wrapper .dataTables_paginate .paginate_button:active{
+
+}
+
+input[type=search]:focus {
+  border-color: cornflowerblue;
+}

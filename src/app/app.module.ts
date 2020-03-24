@@ -26,7 +26,7 @@ import {CovidApiService} from './services/covid-api.service';
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
+    AdminLayoutComponent
   ],
   providers: [CovidApiService],
   bootstrap: [AppComponent]

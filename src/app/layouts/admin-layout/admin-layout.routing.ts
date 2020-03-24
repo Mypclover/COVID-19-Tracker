@@ -1,16 +1,16 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
 import {HelplineComponent} from '../../pages/helpline/helpline.component';
 import {TestCentersComponent} from '../../pages/test-centers/test-centers.component';
-import {AboutUsComponent} from '../../pages/about-us/about-us.component';
 import {HowToProtectComponent} from '../../pages/how-to-protect/how-to-protect.component';
+import {IndiaStatsComponent} from '../../pages/india-stats/india-stats.component';
 
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'help-line',      component: HelplineComponent },
-    { path: 'test-center',    component: TestCentersComponent },
-    { path: 'about-us',       component: AboutUsComponent},
-    { path: 'protect',       component: HowToProtectComponent}
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'help-line', component: HelplineComponent},
+  {path: 'test-center', component: TestCentersComponent},
+  {path: 'protect', component: HowToProtectComponent},
+  {path: 'india', component: IndiaStatsComponent}
 ];
