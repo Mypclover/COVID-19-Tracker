@@ -6,6 +6,7 @@ import {TestCentersComponent} from '../../pages/test-centers/test-centers.compon
 import {HowToProtectComponent} from '../../pages/how-to-protect/how-to-protect.component';
 import {IndiaStatsComponent} from '../../pages/india-stats/india-stats.component';
 import {FaqComponent} from '../../pages/faq/faq.component';
+import {NewsComponent} from '../../pages/news/news.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -14,5 +15,6 @@ export const AdminLayoutRoutes: Routes = [
   {path: 'test-center', component: TestCentersComponent},
   {path: 'protect', component: HowToProtectComponent},
   {path: 'india', component: IndiaStatsComponent},
-  {path: 'faq', component: FaqComponent}
+  {path: 'faq', component: FaqComponent},
+  {path: 'news', component: NewsComponent},
 ];

@@ -16,6 +16,7 @@ import {TestCentersComponent} from '../../pages/test-centers/test-centers.compon
 import {HowToProtectComponent} from '../../pages/how-to-protect/how-to-protect.component';
 import {IndiaStatsComponent} from '../../pages/india-stats/india-stats.component';
 import {FaqComponent} from '../../pages/faq/faq.component';
+import {NewsComponent} from '../../pages/news/news.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -35,7 +36,8 @@ import {FaqComponent} from '../../pages/faq/faq.component';
     TestCentersComponent,
     HowToProtectComponent,
     IndiaStatsComponent,
-    FaqComponent
+    FaqComponent,
+    NewsComponent
   ],
   providers: [CovidApiService]
 })

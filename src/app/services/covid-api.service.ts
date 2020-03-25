@@ -46,4 +46,8 @@ export class CovidApiService {
   getFaqdata() {
     return this.http.get('https://api.covid19india.org/faq.json');
   }
+
+  getNews() {
+    return this.http.get('http://newsapi.org/v2/everything?q=COVID-19&from=2020-02-25&sortBy=publishedAt&apiKey=43f80027f3d5427c8a487fededb5e53e');
+  }
 }
