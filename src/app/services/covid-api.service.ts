@@ -15,7 +15,8 @@ export class CovidApiService {
   // baseUrl = 'https://coronavirus-tracker-api.herokuapp.com/v2/';
   baseUrl = 'https://corona.lmao.ninja/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   /*getLatestUpdate(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl + 'latest');
@@ -25,19 +26,24 @@ export class CovidApiService {
     return this.http.get<Latestupdate[]>(this.baseUrl + 'all');
   }
 
- /* getIndiaStatus(): Observable<IndiaStatus> {
-    return this.http.get<IndiaStatus>(this.baseUrl + 'countries/india');
-  }*/
+  /* getIndiaStatus(): Observable<IndiaStatus> {
+     return this.http.get<IndiaStatus>(this.baseUrl + 'countries/india');
+   }*/
 
 
   getIndiaStatus() {
     return this.http.get('https://corona.lmao.ninja/countries/india?strict=true');
   }
+
   getIndiastateStatus() {
     return this.http.get('https://ameerthehacker.github.io/corona-india-status/covid19-indian-states.json');
   }
 
   getGlobalStatus(): Observable<Globalupdate[]> {
     return this.http.get<Globalupdate[]>(this.baseUrl + 'countries');
+  }
+
+  getFaqdata() {
+    return this.http.get('https://api.covid19india.org/faq.json');
   }
 }
