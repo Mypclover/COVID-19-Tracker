@@ -1,21 +1,25 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-
 // Model
 import {Latestupdate} from '../modeles/latestupdate';
-import {IndiaStatus} from '../modeles/india-status';
 import {Globalupdate} from '../modeles/globalupdate';
+import {DatePipe} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CovidApiService {
 
+  today = new Date().toLocaleDateString();
+
+  naveen: any;
+
   // baseUrl = 'https://coronavirus-tracker-api.herokuapp.com/v2/';
   baseUrl = 'https://corona.lmao.ninja/';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private  datepipe: DatePipe) {
+    this.naveen = this.datepipe.transform(this.today, 'yyyy-MM-dd');
   }
 
   /*getLatestUpdate(): Observable<any[]> {
@@ -48,6 +52,6 @@ export class CovidApiService {
   }
 
   getNews() {
-    return this.http.get('http://newsapi.org/v2/everything?q=COVID-19&from=2020-02-25&sortBy=publishedAt&apiKey=43f80027f3d5427c8a487fededb5e53e');
+    return this.http.get('http://newsapi.org/v2/everything?q=COVID-19&from=' + this.naveen + '&sortBy=publishedAt&apiKey=43f80027f3d5427c8a487fededb5e53e');
   }
 }
