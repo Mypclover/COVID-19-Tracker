@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
 import {ClipboardModule} from 'ngx-clipboard';
@@ -17,6 +17,7 @@ import {HowToProtectComponent} from '../../pages/how-to-protect/how-to-protect.c
 import {IndiaStatsComponent} from '../../pages/india-stats/india-stats.component';
 import {FaqComponent} from '../../pages/faq/faq.component';
 import {NewsComponent} from '../../pages/news/news.component';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -28,7 +29,8 @@ import {NewsComponent} from '../../pages/news/news.component';
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    DataTablesModule
+    DataTablesModule,
+    MDBBootstrapModule.forRoot()
   ],
   declarations: [
     DashboardComponent,
@@ -39,7 +41,7 @@ import {NewsComponent} from '../../pages/news/news.component';
     FaqComponent,
     NewsComponent
   ],
-  providers: [CovidApiService]
+  providers: [CovidApiService, DatePipe]
 })
 
 export class AdminLayoutModule {}
