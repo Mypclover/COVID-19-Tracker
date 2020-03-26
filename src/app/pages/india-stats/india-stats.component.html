@@ -188,6 +188,7 @@
     <div class="col-xl-8 mb-5 mb-xl-0">
       <div class="card shadow">
         <h1 class="text-red text-capitalize text-center"> State Wise Update</h1>
+        <div class="container-fluid text-center text-green">Last Update: <i>{{indianstate.lastUpdated | date:'medium'}}</i></div>
         <div class="table-responsive">
           <table datatable [dtOptions]="dtOptions" class="table align-items-center table-flush">
             <thead>
@@ -219,14 +220,14 @@
           <div class="row align-items-center">
             <div class="col">
               <h6 class="text-uppercase text-muted ls-1 mb-1">Notes:</h6>
-              <h2 class="mb-0">Important Updates</h2>
+              <h2 class="mb-0">Now Available on Android</h2>
             </div>
           </div>
         </div>
         <div class="card-body">
           <div class="container-fluid">
-            <a href="https://api.whatsapp.com/send?phone=41798931892&text=hi&source=&data=" target="_blank">
-              <img class="who-img" src="../../../assets/img/content/who-covid19-02-v1-v1.jpg">
+            <a href="https://bit.ly/2Umyctd" target="_blank">
+              <img class="who-img" src="../../../assets/img/icons/common/google_play.png">
             </a>
           </div>
         </div>
