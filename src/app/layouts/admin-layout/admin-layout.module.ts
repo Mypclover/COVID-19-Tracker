@@ -18,6 +18,7 @@ import {IndiaStatsComponent} from '../../pages/india-stats/india-stats.component
 import {FaqComponent} from '../../pages/faq/faq.component';
 import {NewsComponent} from '../../pages/news/news.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {ModalModule} from 'ngx-bootstrap';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -30,7 +31,8 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
     NgbModule,
     ClipboardModule,
     DataTablesModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    ModalModule.forRoot()
   ],
   declarations: [
     DashboardComponent,
