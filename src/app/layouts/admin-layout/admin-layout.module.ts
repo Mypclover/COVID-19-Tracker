@@ -19,6 +19,7 @@ import {FaqComponent} from '../../pages/faq/faq.component';
 import {NewsComponent} from '../../pages/news/news.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {ModalModule} from 'ngx-bootstrap';
+import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -32,7 +33,8 @@ import {ModalModule} from 'ngx-bootstrap';
     ClipboardModule,
     DataTablesModule,
     MDBBootstrapModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    PerfectScrollbarModule
   ],
   declarations: [
     DashboardComponent,
