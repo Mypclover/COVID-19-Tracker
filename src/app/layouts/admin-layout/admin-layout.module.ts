@@ -21,7 +21,18 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {ModalModule} from 'ngx-bootstrap';
 import {CountupComponent} from '../../pages/countup/countup.component';
 
+import { PerfectScrollbarModule, PerfectScrollbarConfigInterface, PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import {environment} from '../../../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 // import { ToastrModule } from 'ngx-toastr';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+};
+
+
 
 @NgModule({
   imports: [
@@ -33,7 +44,10 @@ import {CountupComponent} from '../../pages/countup/countup.component';
     ClipboardModule,
     DataTablesModule,
     MDBBootstrapModule.forRoot(),
+    PerfectScrollbarModule,
     ModalModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
+
   ],
   declarations: [
     DashboardComponent,
@@ -45,7 +59,10 @@ import {CountupComponent} from '../../pages/countup/countup.component';
     NewsComponent,
     CountupComponent
   ],
-  providers: [CovidApiService, DatePipe]
+  providers: [CovidApiService, DatePipe, {
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+  }]
 })
 
 export class AdminLayoutModule {}
