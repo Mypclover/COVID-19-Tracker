@@ -19,6 +19,7 @@ import {FaqComponent} from '../../pages/faq/faq.component';
 import {NewsComponent} from '../../pages/news/news.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {ModalModule} from 'ngx-bootstrap';
+import {CountupComponent} from '../../pages/countup/countup.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -32,7 +33,7 @@ import {ModalModule} from 'ngx-bootstrap';
     ClipboardModule,
     DataTablesModule,
     MDBBootstrapModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
   ],
   declarations: [
     DashboardComponent,
@@ -41,7 +42,8 @@ import {ModalModule} from 'ngx-bootstrap';
     HowToProtectComponent,
     IndiaStatsComponent,
     FaqComponent,
-    NewsComponent
+    NewsComponent,
+    CountupComponent
   ],
   providers: [CovidApiService, DatePipe]
 })

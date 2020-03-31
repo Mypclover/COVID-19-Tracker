@@ -12,7 +12,7 @@
             <div class="modal-content">
               <div class="modal-body text-center pt-4">
 
-                <div *ngIf="modalStep == 1" class="modal-step" [@fadeInOutAnimation]>
+                <div *ngIf="modalStep == 1" class="modal-step">
                   <img src="assets/img/content/step-1.png" width="125">
                   <h5 class=" mt-3">KNOW HOW IT <span class="text-blue">SPREADS</span></h5>
                   <h6 class="">There is currently No Vaccine to prevent <span class="text-danger">COVID-19</span>
@@ -20,21 +20,22 @@
                   <p>The virus is thought to spread mainly from person-to-person contact
                     through respiratory droplets produced when an infected person coughs or sneezes.</p>
                 </div>
-                <div *ngIf="modalStep == 2" class="modal-step" [@fadeInOutAnimation]>
+                <div *ngIf="modalStep == 2" class="modal-step">
                   <img src="assets/img/content/step-2.png" width="125">
                   <h5 class=" mt-3">TAKE STEPS TO <span class="text-blue">PROTECT YOURSELF</span></h5>
-                  <p>Frequently Wash your hands with soap and water for at least 20 seconds. Always Carry a hand sanitizer
+                  <p>Frequently Wash your hands with soap and water for at least 20 seconds. Always Carry a hand
+                    sanitizer
                     that contains at least 60% alcohol.
                     Avoid touching your eyes, nose, and mouth with unwashed hands.</p>
                 </div>
-                <div *ngIf="modalStep == 3" class="modal-step" [@fadeInOutAnimation]>
+                <div *ngIf="modalStep == 3" class="modal-step">
                   <img src="assets/img/content/step-3.png" width="125">
                   <h5 class=" mt-3">AVOID <span class="text-blue">CLOSE CONTACT</span></h5>
                   <p>Avoid close contact with people who are sick. Put distance between yourself and other people if
                     COVID-19/Coronavirus is spreading in your community.</p>
 
                 </div>
-                <div *ngIf="modalStep == 4" class="modal-step" [@fadeInOutAnimation]>
+                <div *ngIf="modalStep == 4" class="modal-step">
                   <img src="assets/img/content/step-4.png" width="125">
                   <h5 class=" mt-3">TAKE STEPS TO <span class="text-blue">PROTECT YOURSELF</span></h5>
                   <p>
@@ -43,11 +44,12 @@
                     hand sanitizer that contains at least 60% alcohol.
                   </p>
                 </div>
-                <div *ngIf="modalStep == 5" class="modal-step" [@fadeInOutAnimation]>
-                  <img src="assets/img/content/step-5.png" width="125">
+                <div *ngIf="modalStep == 5" class="modal-step">
+                  <img src="assets/img/content/step-5.png" width="125">`
                   <h5 class=" mt-3">CLEAN & <span class="text-blue">DISINFECT</span></h5>
                   <p>
-                    Clean & disinfect frequently touched surfaces daily. This includes tables, doorknobs, light switches,
+                    Clean & disinfect frequently touched surfaces daily. This includes tables, doorknobs, light
+                    switches,
                     countertops, handles, desks, phones, keyboards, toilets, faucets, and sinks.
                     If surfaces are dirty, clean them: Use detergent or soap and water prior to disinfection.
                   </p>
@@ -63,7 +65,8 @@
                       <label class="custom-control-label" for="forDontShow">Don't Show again</label>
                     </div>
                   </div>
-                  <button (click)="close(dontShow.checked)" class="btn btn-blue waves-effect waves-light mb-4"><i class="fas fa-times-circle mr-1"></i><span> Close</span></button>
+                  <button (click)="close(dontShow.checked)" class="btn btn-blue waves-effect waves-light mb-4"><i
+                    class="fas fa-times-circle mr-1"></i><span> Close</span></button>
                 </div>
               </div>
             </div>
@@ -233,7 +236,7 @@
     </div>
   </div>
 </div>
-<div class="container-fluid mt--7">
+<!--<div class="container-fluid mt&#45;&#45;7">
   <div class="row">
     <div class="col-xl-8 mb-5 mb-xl-0">
       <div class="card shadow">
@@ -289,40 +292,329 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 
+<br>
+<br><!--
 <div class="container-fluid">
-  <div class="card-box">
-    <div class="float-md-right float-right d-md-inline d-none">
-      <button type="button" class="btn btn-xs btn-lighten-blue waves-effect waves-light width-xs mr-md-1 mr-0"
-              (click)="loadMap('cases');">Cases</button>
-      <button type="button" class="btn btn-xs btn-lighten-danger waves-effect waves-light width-xs mr-md-1 mr-0"
-              (click)="loadMap('deaths')">Deaths</button>
-      <button type="button" class="btn btn-xs btn-lighten-success waves-effect waves-light width-xs mr-md-1 mr-0"
-              (click)="loadMap('recovered')">Recovered</button>
-      <button type="button" class="btn btn-xs btn-lighten-warning waves-effect waves-light width-xs"
-              (click)="loadMap('critical')">Critical</button>
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="card-box">
+        <div class="float-right">
+          <p>Today's Statistics</p>
+        </div>
+
+        <h4 class="header-title mb-3">Affected Countries </h4>
+        <div class="form-group row">
+          <div class="col-md-8 col-8">
+            <input type="text" id="example-placeholder" #search (keyup)="searchCountries(search.value)"
+                   class="form-control" placeholder="Search {{countries.length}} Affected Countries">
+          </div>
+          <div class="col-md-4 col-4">
+            <select class="custom-select" #sortBy (change)="sortCountries(sortBy.value,search.value)">
+              <option selected="" disabled>Sort By</option>
+              <option value="cases">Total Cases</option>
+              <option value="todayCases">Today Cases</option>
+              <option value="deaths">Total Deaths</option>
+              <option value="todayDeaths">Today Deaths</option>
+              <option value="recovered">Total Recoveries</option>
+            </select>
+          </div>
+        </div>
+        <div class="fa-3x text-center" [class.d-none]="!isLoadingCountries">
+          <i class="fas fa-circle-notch fa-spin m-2"></i>
+        </div>
+        <div class="infectedCountries" [class.d-none]="isLoadingCountries">
+          <perfect-scrollbar #perfectscrollbar style="height:346px;">
+            <div class="infectedCountry" *ngFor="let country of countries">
+              <a [routerLink]="[ '/country', country.country.toLowerCase() ]">
+                <div class="infectedCountryFlag">
+                  <img *ngIf="countryCodes[country.country] else unknown" style="height: 30px;
+                width: 40px;" src="assets/flags/{{countryCodes[country.country].toLowerCase()}}.svg"
+                       alt="{{country.country}}">
+                  <ng-template #unknown>
+                    <img src="assets/flags/unknown.svg" alt="{{country.country}}">
+                  </ng-template>
+                </div>
+                <h5 class="infectedCountryName mt-0 mb-1">{{country.country}}</h5>
+                <p class="infectedCountryDetails font-weight-bold"><span class="text-blue">{{country.cases}}
+                  Cases</span> & <span class="text-danger">{{country.deaths}} Deaths</span></p>
+                <p class="infectedCountryCases text-blue">+{{country.todayCases}} Cases</p>
+                <p class="infectedCountryDeaths text-danger">+{{country.todayDeaths}} Deaths</p>
+              </a>
+            </div>
+          </perfect-scrollbar>
+
+
+        </div>
+      </div>
     </div>
-    <h4 class="header-title mt-0 mb-3 mt-md-0">Worldwide Infections <button type="button" class="btn btn-xs btn-lighten-secondary waves-effect waves-light width-xs mr-md-1 mr-0"
-                                                                            (click)="showModal();">How to prevent?</button></h4>
-    <div class="fa-3x text-center" [class.d-none]="!isLoadingMap">
-      <i class="fas fa-circle-notch fa-spin m-2"></i>
+    <div class="col-xl-8 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-box">
+          <div class="float-md-right float-right d-md-inline d-none">
+            <button type="button" class="btn btn-xs btn-lighten-blue waves-effect waves-light width-xs mr-md-1 mr-0"
+                    (click)="loadMap('cases');">Cases
+            </button>
+            <button type="button" class="btn btn-xs btn-lighten-danger waves-effect waves-light width-xs mr-md-1 mr-0"
+                    (click)="loadMap('deaths')">Deaths
+            </button>
+            <button type="button" class="btn btn-xs btn-lighten-success waves-effect waves-light width-xs mr-md-1 mr-0"
+                    (click)="loadMap('recovered')">Recovered
+            </button>
+            <button type="button" class="btn btn-xs btn-lighten-warning waves-effect waves-light width-xs"
+                    (click)="loadMap('critical')">Critical
+            </button>
+          </div>
+          <h4 class="header-title mt-0 mb-3 mt-md-0">Worldwide Infections
+            <button type="button"
+                    class="btn btn-xs btn-lighten-secondary waves-effect waves-light width-xs mr-md-1 mr-0"
+                    (click)="showModal();">How to prevent?
+            </button>
+          </h4>
+          &lt;!&ndash;          <div class="fa-3x text-center" [class.d-none]="!isLoadingMap">&ndash;&gt;
+          &lt;!&ndash;            <i class="fas fa-circle-notch fa-spin m-2"></i>&ndash;&gt;
+          &lt;!&ndash;          </div>&ndash;&gt;
+          <div class="table-responsive">
+            <div id="worldChart" style="width: 100%; height: 400px; overflow: hidden"></div>
+          </div>
+          <div class="float-right d-md-none d-inline">
+            <button type="button"
+                    class="btn btn-block btn-xs btn-lighten-blue waves-effect waves-light width-xs mr-md-1 mr-0"
+                    (click)="loadMap('cases');">Cases
+            </button>
+            <button type="button"
+                    class="btn btn-block btn-xs btn-lighten-danger waves-effect waves-light width-xs mr-md-1 mr-0"
+                    (click)="loadMap('deaths')">Deaths
+            </button>
+            <button type="button"
+                    class="btn btn-block btn-xs btn-lighten-success waves-effect waves-light width-xs mr-md-1 mr-0"
+                    (click)="loadMap('recovered')">Recovered
+            </button>
+            <button type="button" class="btn btn-block btn-xs btn-lighten-warning waves-effect waves-light width-xs"
+                    (click)="loadMap('critical')">Critical
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="table-responsive" [class.d-none]="isLoadingMap">
-      <div id="worldChart" style="width: 100%; height: 400px; overflow: hidden"></div>
-    </div>
-    <div class="float-right d-md-none d-inline">
-      <button type="button"
-              class="btn btn-block btn-xs btn-lighten-blue waves-effect waves-light width-xs mr-md-1 mr-0"
-              (click)="loadMap('cases');">Cases</button>
-      <button type="button"
-              class="btn btn-block btn-xs btn-lighten-danger waves-effect waves-light width-xs mr-md-1 mr-0"
-              (click)="loadMap('deaths')">Deaths</button>
-      <button type="button"
-              class="btn btn-block btn-xs btn-lighten-success waves-effect waves-light width-xs mr-md-1 mr-0"
-              (click)="loadMap('recovered')">Recovered</button>
-      <button type="button" class="btn btn-block btn-xs btn-lighten-warning waves-effect waves-light width-xs"
-              (click)="loadMap('critical')">Critical</button>
+    <div class="col-xl-4">
+      <div class="card shadow">
+
+      </div>
     </div>
   </div>
-</div><!-- end col -->
+</div>
+-->
+
+<div class="row">
+  <div class="col-xl-4">
+    <div class="card-box">
+      <div class="float-right">
+        <p>Today's Statistics</p>
+      </div>
+
+      <h4 class="header-title mb-3">Affected Countries </h4>
+      <div class="form-group row">
+        <div class="col-md-8 col-8">
+          <input type="text" id="example-placeholder" #search (keyup)="searchCountries(search.value)"
+                 class="form-control" placeholder="Search {{countries.length}} Affected Countries">
+        </div>
+        <div class="col-md-4 col-4">
+          <select class="custom-select" #sortBy (change)="sortCountries(sortBy.value,search.value)">
+            <option selected="" disabled>Sort By</option>
+            <option value="cases">Total Cases</option>
+            <option value="todayCases">Today Cases</option>
+            <option value="deaths">Total Deaths</option>
+            <option value="todayDeaths">Today Deaths</option>
+            <option value="recovered">Total Recoveries</option>
+          </select>
+        </div>
+      </div>
+      <div class="fa-3x text-center" [class.d-none]="!isLoadingCountries">
+        <i class="fas fa-circle-notch fa-spin m-2"></i>
+      </div>
+      <div class="infectedCountries" [class.d-none]="isLoadingCountries">
+        <perfect-scrollbar #perfectscrollbar style="height:346px;">
+          <div class="infectedCountry" *ngFor="let country of countries">
+              <div class="infectedCountryFlag">
+                <img *ngIf="countryCodes[country.country] else unknown" style="height: 30px;
+                width: 40px;" src="assets/flags/{{countryCodes[country.country].toLowerCase()}}.svg"
+                     alt="{{country.country}}">
+                <ng-template #unknown>
+                  <img src="assets/flags/unknown.svg" alt="{{country.country}}">
+                </ng-template>
+              </div>
+              <h5 class="infectedCountryName mt-0 mb-1">{{country.country}}</h5>
+              <p class="infectedCountryDetails font-weight-bold"><span class="text-blue">{{country.cases}}
+                Cases</span> & <span class="text-danger">{{country.deaths}} Deaths</span></p>
+              <p class="infectedCountryCases text-blue">+{{country.todayCases}} Cases</p>
+              <p class="infectedCountryDeaths text-danger">+{{country.todayDeaths}} Deaths</p>
+
+          </div>
+        </perfect-scrollbar>
+
+
+      </div>
+    </div>
+  </div><!-- end col -->
+
+  <div class="col-xl-8">
+    <div class="card-box">
+      <div class="float-md-right float-right d-md-inline d-none">
+        <button type="button" class="btn btn-xs btn-lighten-blue waves-effect waves-light width-xs mr-md-1 mr-0"
+                (click)="loadMap('cases');">Cases</button>
+        <button type="button" class="btn btn-xs btn-lighten-danger waves-effect waves-light width-xs mr-md-1 mr-0"
+                (click)="loadMap('deaths')">Deaths</button>
+        <button type="button" class="btn btn-xs btn-lighten-success waves-effect waves-light width-xs mr-md-1 mr-0"
+                (click)="loadMap('recovered')">Recovered</button>
+        <button type="button" class="btn btn-xs btn-lighten-warning waves-effect waves-light width-xs"
+                (click)="loadMap('critical')">Critical</button>
+      </div>
+      <h4 class="header-title mt-0 mb-3 mt-md-0">Worldwide Infections <button type="button" class="btn btn-xs btn-lighten-secondary waves-effect waves-light width-xs mr-md-1 mr-0"
+                                                                              (click)="showModal();">How to prevent?</button></h4>
+      <div class="fa-3x text-center" [class.d-none]="!isLoadingMap">
+        <i class="fas fa-circle-notch fa-spin m-2"></i>
+      </div>
+      <div class="table-responsive" [class.d-none]="isLoadingMap">
+        <div id="worldChart" style="width: 100%; height: 400px; overflow: hidden"></div>
+      </div>
+      <div class="float-right d-md-none d-inline">
+        <button type="button"
+                class="btn btn-block btn-xs btn-lighten-blue waves-effect waves-light width-xs mr-md-1 mr-0"
+                (click)="loadMap('cases');">Cases</button>
+        <button type="button"
+                class="btn btn-block btn-xs btn-lighten-danger waves-effect waves-light width-xs mr-md-1 mr-0"
+                (click)="loadMap('deaths')">Deaths</button>
+        <button type="button"
+                class="btn btn-block btn-xs btn-lighten-success waves-effect waves-light width-xs mr-md-1 mr-0"
+                (click)="loadMap('recovered')">Recovered</button>
+        <button type="button" class="btn btn-block btn-xs btn-lighten-warning waves-effect waves-light width-xs"
+                (click)="loadMap('critical')">Critical</button>
+      </div>
+    </div>
+  </div><!-- end col -->
+
+</div>
+<br>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-8 mb-5 mb-xl-0">
+      <div class="card shadow">
+
+      </div>
+    </div>
+    <div class="col-xl-4">
+      <div class="card shadow">
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="card-box">
+        <h4 class="header-title mb-3">Infection Distribution By Countries</h4>
+        <div class="fa-3x text-center" [class.d-none]="!isLoading">
+          <i class="fas fa-circle-notch fa-spin m-2"></i>
+        </div>
+        <div class="inbox-widget" [class.d-none]="isLoading">
+
+          <div id="pieChart" style="width: 100%; height: 300px"></div>
+
+        </div>
+      </div>
+    </div><!-- end col -->
+
+    <div class="col-xl-5">
+      <div class="card-box">
+
+        <h4 class="header-title mt-0 mb-3">Infection Rates</h4>
+        <div class="row">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-xl-6 col-md-6">
+                <div class="card-box widget-user bg-d">
+                  <div class="text-center">
+                    <div class="fa-3x text-center" [class.d-none]="!isLoading">
+                      <i class="fas fa-circle-notch fa-spin m-2 text-blue"></i>
+                    </div>
+                    <h2 [class.d-none]="isLoading" class="font-weight-normal text-success">
+                      {{(totalRecoveries / finishedCases * 100) | number:'.1-2'}}%</h2>
+                    <h5>Recovery Rate</h5>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-6 col-md-6">
+                <div class="card-box widget-user bg-d">
+                  <div class="text-center">
+                    <div class="fa-3x text-center" [class.d-none]="!isLoading">
+                      <i class="fas fa-circle-notch fa-spin m-2 text-danger"></i>
+                    </div>
+                    <h2 [class.d-none]="isLoading" class="font-weight-normal text-danger">
+                      {{(totalDeaths / finishedCases * 100) | number:'.1-2'}}%</h2>
+                    <h5>Death Rate</h5>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-6 col-md-6">
+                <div class="card-box widget-user bg-d">
+                  <div class="text-center">
+                    <div class="fa-3x text-center" [class.d-none]="!isLoading">
+                      <i class="fas fa-circle-notch fa-spin m-2 text-warning"></i>
+                    </div>
+                    <h2 [class.d-none]="isLoading" class="font-weight-normal text-warning">
+                      {{(totalCritical / activeCases * 100) | number:'.1-2'}}%</h2>
+                    <h5>Critical Rate</h5>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-6 col-md-6">
+                <div class="card-box widget-user bg-d">
+                  <div class="text-center">
+                    <div class="fa-3x text-center" [class.d-none]="!isLoading">
+                      <i class="fas fa-circle-notch fa-spin m-2 text-info"></i>
+                    </div>
+                    <h2 [class.d-none]="isLoading" class="font-weight-normal text-info" *ngIf="fuse">
+                      {{fuse.list.length}}</h2>
+                    <h5>Nations Affected</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end col -->
+    <div class="col-xl-3">
+      <div class="card-box text-center">
+        <h5>Outbreak Started</h5>
+        <app-countup></app-countup>
+      </div>
+      <div class="card-box text-center">
+
+        <h5>Share with your friends, family or coworkers.</h5>
+        <p>Keep them up to date with the coronavirus outbreak.</p>
+        <a class="btn btn-icon waves-effect btn-blue mr-1" target="_blank"
+           href="https://www.facebook.com/sharer/sharer.php?u=https://covid19indiatracker.com/"> <i
+          class="fab fa-facebook"></i> </a>
+        <a class="btn btn-icon waves-effect btn-blue mr-1" target="_blank"
+           href="https://twitter.com/intent/tweet?url=https://covid19indiatracker.com/&hashtags=Covid_19,CoronavirusPandemic,coronastatistics,corona&text=Stay%20Updated%20with%20Live%20Coronavirus%20Tracker">
+          <i class="fab fa-twitter"></i> </a>
+        <a class="btn btn-icon waves-effect btn-blue mr-1" target="_blank"
+           href="https://vk.com/share.php?url=https://covid19indiatracker.com/"> <i class="fab fa-vk"></i> </a>
+        <a class="btn btn-icon waves-effect btn-blue"
+           href="whatsapp://send?text=Coronavirus live statistics and tracker https://covid19indiatracker.com/"
+           data-action="share/whatsapp/share"> <i class="fab fa-whatsapp"></i> </a>
+       <!-- <a href="https://ko-fi.com/ossamarafique" class="btn btn- waves-effect btn-danger d-block mt-1 mx-auto"> <i
+          class="fas fa-coffee"></i> Buy me a coffee </a>-->
+      </div>
+    </div><!-- end col -->
+
+  </div>
+</div>

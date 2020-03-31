@@ -18,29 +18,133 @@
   transition: 0.2s ease all;
 }
 
+.bg-d {
+  background-color: #282d37;
+}
+
+.modal-step {
+  min-height: 270px;
+  transition: all 0.2s;
+}
+
+// Custom card box
+.card-box {
+  background-color: #f6f9fc;
+  padding: 1.25rem;
+  box-shadow: 0 0.75rem 6rem rgba(56, 65, 74,.03);
+  margin-bottom: 30px;
+  //@include border-radius($card-border-radius);
+
+
+  .card-drop {
+    color: #6c757d;
+    font-size: 20px;
+    display: inline-block;
+    line-height: 1px;
+  }
+}
+
+.infectedCountries {
+  .infectedCountry {
+    border-bottom: 1px solid lighten(#323a46, 4%);
+    overflow: hidden;
+    padding: 0.75rem 0;
+    position: relative;
+    &:last-child {
+      border: none;
+    }
+    .infectedCountryFlag {
+      display: block;
+      float: left;
+      margin-right: 15px;
+      width: 40px;
+      img {
+        width: 40px;
+      }
+    }
+    .infectedCountryName {
+      color: #323a46;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .infectedCountryDetails {
+      color: #323a46;
+      display: block;
+      font-size: 0.8125rem;
+      margin: 0;
+      overflow: hidden;
+    }
+    .infectedCountryCases {
+      color: #323a46;
+      font-size: 0.6875rem;
+      position: absolute;
+      right: 5px;
+      top: 10px;
+    }
+    .infectedCountryDeaths {
+      color: #323a46;
+      font-size: 0.6875rem;
+      position: absolute;
+      right: 5px;
+      top: 30px;
+    }
+  }
+}
+
+
 
 .table-responsive {
   padding: 20px;
 }
 
+.btn-lighten-blue {
+  border: 1px solid rgba(33, 175, 221, 0.2) !important;
+  background-color: rgba(33, 175, 221, 0.25) !important;
+  color: #21AFDD !important;
+}
 
-::ng-deep .paginate_button{
+
+.btn-lighten-warning {
+  border: 1px solid rgba(249, 200, 81, 0.2) !important;
+  background-color: rgba(249, 200, 81, 0.25) !important;
+  color: #f9c851 !important;
+}
+
+.btn-lighten-success {
+  border: 1px solid rgba(16, 196, 105, 0.2) !important;
+  background-color: rgba(16, 196, 105, 0.25) !important;
+  color: #10c469 !important;
+}
+
+.btn-lighten-danger {
+  border: 1px solid rgba(255, 91, 91, 0.2) !important;
+  background-color: rgba(255, 91, 91, 0.25) !important;
+  color: #ff5b5b !important;
+}
+
+.btn-blue {
+  color: #fff;
+  background-color: #21AFDD;
+  border-color: #21AFDD;
+}
+
+::ng-deep .paginate_button {
   z-index: 1;
   color: #fff;
   border-color: #5e72e4;
   background-color: #5e72e4;
-  border-radius: 50%!important;
+  border-radius: 50% !important;
 }
 
-.paginate_button.current:hover{
+.paginate_button.current:hover {
 
 }
 
-::ng-deep .dataTables_wrapper .dataTables_paginate .paginate_button{
+::ng-deep .dataTables_wrapper .dataTables_paginate .paginate_button {
   color: #FFFFFF !important;
 }
 
-::ng-deep .dataTables_wrapper .dataTables_paginate .paginate_button:active{
+::ng-deep .dataTables_wrapper .dataTables_paginate .paginate_button:active {
 
 }
 
