@@ -9,17 +9,30 @@
 
         <div class="container travel-alert">
           <div class="card-box">
-            <div class="form-inline">Select a Country
+            <div class="form-inline"><strong>Select a Country</strong>
               <div class="form-group mx-sm-3 mb-2">
-                <input type="text" class="form-control" [(ngModel)]="selectedCountry"  [ngbTypeahead]="search"/>
+                <input type="text" class="form-control" [(ngModel)]="selectedCountry" [ngbTypeahead]="search"/>
               </div>
             </div>
           </div>
           <div class="card-body" *ngIf="selectedCountry == null">
-
-
+            <img src="../../../assets/img/content/covid-19-tips.jpg" class="img-fluid">
           </div>
-            <div class="" style="width: 69rem;" *ngFor="let alert of resultData">
+          <div class="card-body" *ngIf="selectedCountry == ''">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <span><img src="../../../assets/img/content/travel-alert.png" class="img-fluid img-center"></span>
+                </div>
+                <div class="col">
+                  <span> <h1
+                    class="travel-alert-message">Select a Country Name to know about their Travel Restrictions.</h1></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card" style="width: 69rem;" *ngFor="let alert of resultData">
               <div class="card-body" *ngIf="selectedCountry == alert.countryName">
                 <div class="container">
                   <div class="row">
@@ -27,7 +40,8 @@
                       <span> <p class="card-title h2" style="float: left">{{alert.countryName}}</p></span>
                     </div>
                     <div class="col">
-                      <span><img src="../../../assets/flags/{{alert.countryCode | lowercase}}.svg" style="width: 40px; height: 28px;"></span>
+                    <span><img src="../../../assets/flags/{{alert.countryCode | lowercase}}.svg"
+                               alt="no flag image found" style="width: 40px; height: 28px;"></span>
                     </div>
                   </div>
                 </div>
@@ -38,6 +52,7 @@
                 <p class="card-footer" style="float: right">{{alert.publishedDate | date:'short'}}</p>
               </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
