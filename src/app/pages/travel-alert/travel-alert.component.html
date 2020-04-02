@@ -1,0 +1,45 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="card">
+
+        <div class="container-fluid text-center">
+          <h1 class="display-5 text-blue">Travel Alert Information</h1>
+        </div>
+
+        <div class="container travel-alert">
+          <div class="card-box">
+            <div class="form-inline">Select a Country
+              <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" [(ngModel)]="selectedCountry"  [ngbTypeahead]="search"/>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="selectedCountry == null">
+
+
+          </div>
+            <div class="" style="width: 69rem;" *ngFor="let alert of resultData">
+              <div class="card-body" *ngIf="selectedCountry == alert.countryName">
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <span> <p class="card-title h2" style="float: left">{{alert.countryName}}</p></span>
+                    </div>
+                    <div class="col">
+                      <span><img src="../../../assets/flags/{{alert.countryCode | lowercase}}.svg" style="width: 40px; height: 28px;"></span>
+                    </div>
+                  </div>
+                </div>
+                <p class="card-text">{{alert.messageData.title}}</p>
+                <p class="card-text">{{alert.messageData.subtitle}}</p>
+                <p *ngFor="let it of alert.messageData.options">{{it}}</p>
+
+                <p class="card-footer" style="float: right">{{alert.publishedDate | date:'short'}}</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

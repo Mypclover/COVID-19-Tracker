@@ -26,6 +26,7 @@ import {environment} from '../../../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TravelAlertComponent} from '../../pages/travel-alert/travel-alert.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -57,7 +58,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     IndiaStatsComponent,
     FaqComponent,
     NewsComponent,
-    CountupComponent
+    CountupComponent,
+    TravelAlertComponent
   ],
   providers: [CovidApiService, DatePipe, {
     provide: PERFECT_SCROLLBAR_CONFIG,

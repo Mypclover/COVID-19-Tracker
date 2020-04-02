@@ -9,13 +9,13 @@ import {IndiaStatus} from '../modeles/india-status';
 import {Globalupdate} from '../modeles/globalupdate';
 import {Country} from '../modeles/country';
 import {catchError, retry} from 'rxjs/operators';
+import {TravelAlert} from '../modeles/travel-alert';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CovidApiService {
 
-  // baseUrl = 'https://coronavirus-tracker-api.herokuapp.com/v2/';
   baseUrl = 'https://corona.lmao.ninja/';
 
   private host = 'https://api.coronastatistics.live';
@@ -23,37 +23,54 @@ export class CovidApiService {
   constructor(private http: HttpClient) {
   }
 
-  /*getLatestUpdate(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl + 'latest');
-  }*/
-
   getLatestUpdate(): Observable<Latestupdate[]> {
-    return this.http.get<Latestupdate[]>(this.baseUrl + 'all');
+    return this.http.get<Latestupdate[]>(this.baseUrl + 'all').pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
-
-  /* getIndiaStatus(): Observable<IndiaStatus> {
-     return this.http.get<IndiaStatus>(this.baseUrl + 'countries/india');
-   }*/
 
 
   getIndiaStatus() {
-    return this.http.get('https://corona.lmao.ninja/countries/india?strict=true');
+    return this.http.get('https://corona.lmao.ninja/countries/india?strict=true').pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
   getIndiastateStatus() {
-    return this.http.get('https://ameerthehacker.github.io/corona-india-status/covid19-indian-states.json');
+    return this.http.get('https://ameerthehacker.github.io/corona-india-status/covid19-indian-states.json').pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
   getGlobalStatus(): Observable<Globalupdate[]> {
-    return this.http.get<Globalupdate[]>(this.baseUrl + 'countries');
+    return this.http.get<Globalupdate[]>(this.baseUrl + 'countries').pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
   getFaqdata() {
-    return this.http.get('https://api.covid19india.org/faq.json');
+    return this.http.get('https://api.covid19india.org/faq.json').pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
   getNews() {
-    return this.http.get('http://newsapi.org/v2/everything?q=COVID-19&from=2020-02-25&sortBy=publishedAt&apiKey=43f80027f3d5427c8a487fededb5e53e');
+    return this.http.get('http://newsapi.org/v2/everything?q=COVID-19&from=2020-02-25&sortBy=publishedAt&apiKey=43f80027f3d5427c8a487fededb5e53e').pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  getTravelAlert(): Observable<TravelAlert>  {
+    return this.http.get<TravelAlert>('https://api.coronatracker.com/v1/travel-alert').pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
   getAll(type): Observable<Country> {
