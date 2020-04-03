@@ -14,24 +14,6 @@ export class IndiaStatsComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
 
-  test = {
-    'data': {
-      'Bihar': {
-        'totalIndianCases': 2,
-        'totalForeignCases': 0,
-        'totalRecovered': 0,
-        'totalDeaths': 1,
-        'newCasesToday': 0
-      },
-      'Chhattisgarh': {
-        'totalIndianCases': 1,
-        'totalForeignCases': 0,
-        'totalRecovered': 0,
-        'totalDeaths': 0,
-        'newCasesToday': 0
-      }
-    }
-  }
 
   constructor(private apiService: CovidApiService) {
   }
@@ -44,8 +26,6 @@ export class IndiaStatsComponent implements OnInit {
 
     this.apiService.getIndiastateStatus().subscribe((state) => {
       this.indianstate = state;
-
-      console.log('nnnnnnn' + this.indianstate);
     });
 
 

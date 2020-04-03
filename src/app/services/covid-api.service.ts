@@ -1,11 +1,8 @@
-
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-
 // Model
 import {Latestupdate} from '../modeles/latestupdate';
-import {IndiaStatus} from '../modeles/india-status';
 import {Globalupdate} from '../modeles/globalupdate';
 import {Country} from '../modeles/country';
 import {catchError, retry} from 'rxjs/operators';
@@ -39,7 +36,8 @@ export class CovidApiService {
   }
 
   getIndiastateStatus() {
-    return this.http.get('https://ameerthehacker.github.io/corona-india-status/covid19-indian-states.json').pipe(
+    // return this.http.get('https://ameerthehacker.github.io/corona-india-status/covid19-indian-states.json').pipe(
+    return this.http.get('https://api.rootnet.in/covid19-in/stats/latest').pipe(
       retry(1),
       catchError(this.handleError)
     );

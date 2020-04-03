@@ -188,7 +188,7 @@
     <div class="col-xl-8 mb-5 mb-xl-0">
       <div class="card shadow">
         <h1 class="text-red text-capitalize text-center"> State Wise Update</h1>
-        <div class="container-fluid text-center text-green">Last Update: <i>{{indianstate.lastUpdated | date:'medium'}}</i></div>
+        <div class="container-fluid text-center text-green">Last Update: <i>{{indianstate.lastRefreshed | date:'medium'}}</i></div>
         <div class="table-responsive">
           <table datatable [dtOptions]="dtOptions" class="table align-items-center table-flush">
             <thead>
@@ -198,17 +198,15 @@
               <th scope="col">Total Foreign Cases</th>
               <th scope="col">Total Recovered</th>
               <th scope="col">Total Deaths</th>
-              <th scope="col">New Cases Today</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let stats of indianstate.data | keyvalue">
-              <td>{{stats.key}}</td>
-              <td>{{stats.value.totalIndianCases}}</td>
-              <td>{{stats.value.totalForeignCases}}</td>
-              <td>{{stats.value.totalRecovered}}</td>
-              <td>{{stats.value.totalDeaths}}</td>
-              <td>{{stats.value.newCasesToday}}</td>
+            <tr *ngFor="let stats of indianstate.data.regional">
+              <td>{{stats.loc}}</td>
+              <td>{{stats.confirmedCasesIndian}}</td>
+              <td>{{stats.confirmedCasesForeign}}</td>
+              <td>{{stats.discharged}}</td>
+              <td>{{stats.deaths}}</td>
             </tbody>
           </table>
         </div>
