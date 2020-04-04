@@ -1,0 +1,106 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="card">
+        <div class="container-fluid text-center">
+          <h1 class="display-2 text-blue">Inida District Level Update</h1>
+        </div>
+        <div class="container">
+          <div class="card-box" style="align-items: center">
+            <div class="form-inline"><strong>Type your State Name</strong>
+              <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" [(ngModel)]="selectedCountry" [ngbTypeahead]="search"
+                       placeholder="Enter a state Name"/>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="selectedCountry == null">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <span><img src="../../../assets/img/content/covid19indiatracker-i4india-v2.png"
+                             class="img-fluid img-center"></span>
+                </div>
+                <div class="col">
+                  <div class="dontation-section">
+                    <h2>Contributions so far</h2>
+                    <div class="dontation-section__numbers">
+                      <p>
+                        <span id="pledgedCount"><strong>10,38,162</strong></span> <br>
+                        <span class="dontation-subtext">Donors across India</span>
+                      </p>
+                      <div class="hr"></div>
+                      <p>
+                        <span><strong>₹ <span id="pledgedAmount">28,38,19,840</span></strong></span> <br>
+                        <span class="dontation-subtext">Total amount donated so far</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="" style="text-align: center; padding-top: 22px">
+                    <a href="https://www.phonepe.com/i4india/index.html" target="_blank">
+                      <button type="button" class="btn btn-primary btn-lg" style="background-color: #5F259F"> Donate
+                        Now
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="selectedCountry == ''">
+            <div class="container">
+              <img src="../../../assets/img/content/covid19indiatracker-prevention-tips.jpg"
+                   class="img-fluid img-center">
+            </div>
+          </div>
+          <div class="container-fluid">
+
+            <div class="row mt-5">
+              <div class="col">
+                <div class="card bg-default shadow" *ngFor="let stateWise of stateDetailedList;let i=index">
+                  <div *ngIf="selectedCountry == stateWise.name">
+                    <div class="card-header bg-transparent border-0">
+                      <h3 class="text-white mb-0">{{stateWise.name}}</h3>
+                    </div>
+                    <perfect-scrollbar #perfectscrollbar style="height:346px;">
+                      <div class="table-responsive">
+                        <table class="table align-items-center table-dark table-flush">
+                          <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">District</th>
+                            <th scope="col">Confirmed</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor='let disData of stateWise.details'>
+                            <td>
+                                    <span>
+                                        {{disData.name}}
+                                    </span>
+                            </td>
+                            <td>
+                                    <span>
+                                        {{disData.details.confirmed}}
+                                    </span>
+                              <span class="badge badge-danger">
+                                        <i class="fa fa-arrow-up" *ngIf='disData.details.delta.confirmed > 0'>
+                                          {{disData.details.delta.confirmed}} New
+                                        </i>
+                                      </span>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </perfect-scrollbar>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import {IndiaStatsComponent} from '../../pages/india-stats/india-stats.component
 import {FaqComponent} from '../../pages/faq/faq.component';
 import {NewsComponent} from '../../pages/news/news.component';
 import {TravelAlertComponent} from '../../pages/travel-alert/travel-alert.component';
+import {DistrictWiseUpdateComponent} from '../../pages/district-wise-update/district-wise-update.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -19,4 +20,5 @@ export const AdminLayoutRoutes: Routes = [
   {path: 'faq', component: FaqComponent},
   {path: 'news', component: NewsComponent},
   {path: 'travel-alert', component: TravelAlertComponent},
+  {path: 'district-level-update', component: DistrictWiseUpdateComponent},
 ];

@@ -220,7 +220,7 @@
 
         <h4 class="header-title mb-3">Tamil Nadu District Wise Update</h4>
         <div class="form-group row">
-         <!-- <div class="col-md-8 col-8">
+          <!--<div class="col-md-8 col-8">
             <input type="text" id="example-placeholder" #search (keyup)="searchDistrict(search.value)"
                    class="form-control" placeholder="Search {{district.length}} Affected Countries">
           </div>-->
@@ -234,7 +234,8 @@
         </div>
         <div class="infectedCountries">
           <perfect-scrollbar #perfectscrollbar style="height:346px;">
-            <div class="infectedCountry" *ngFor="let country of test['Tamil Nadu'].districtData | keyvalue">
+            <div *ngFor="let data of district['Tamil Nadu'].districtData | keyvalue">
+            <div class="infectedCountry" *ngFor="let country of district['Tamil Nadu'].districtData | keyvalue">
               <div class="container">
                 <div class="row">
                   <div class="col"><span><h5 class="infectedCountryName mt-0 mb-1">{{country.key}}</h5></span></div>
@@ -242,9 +243,19 @@
                 </div>
               </div>
             </div>
+            </div>
           </perfect-scrollbar>
 
 
+        </div>
+      </div>
+      <br>
+      <div class="card-body">
+        <div class="container-fluid">
+          <h4 class="who-img ">Now Available on Android</h4>
+          <a href="https://bit.ly/corona-tracker-india" target="_blank">
+            <img class="who-img img-fluid" src="../../../assets/img/icons/common/google_play.png">
+          </a>
         </div>
       </div>
     </div>

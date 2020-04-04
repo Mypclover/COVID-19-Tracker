@@ -13,7 +13,6 @@ import {AppRoutingModule} from './app.routing';
 import {ComponentsModule} from './components/components.module';
 import {CovidApiService} from './services/covid-api.service';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
-import { TravelAlertComponent } from './pages/travel-alert/travel-alert.component';
 
 
 @NgModule({
