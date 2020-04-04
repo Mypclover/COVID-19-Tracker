@@ -213,21 +213,38 @@
       </div>
     </div>
     <div class="col-xl-4">
-      <div class="card shadow">
-        <div class="card-header bg-transparent">
-          <div class="row align-items-center">
-            <div class="col">
-              <h6 class="text-uppercase text-muted ls-1 mb-1">Notes:</h6>
-              <h2 class="mb-0">Now Available on Android</h2>
-            </div>
-          </div>
+      <div class="card-box">
+        <!--<div class="float-right">
+          <p>Today's Statistics</p>
+        </div>-->
+
+        <h4 class="header-title mb-3">Tamil Nadu District Wise Update</h4>
+        <div class="form-group row">
+         <!-- <div class="col-md-8 col-8">
+            <input type="text" id="example-placeholder" #search (keyup)="searchDistrict(search.value)"
+                   class="form-control" placeholder="Search {{district.length}} Affected Countries">
+          </div>-->
+        </div><!--
+        <div class="fa-3x text-center" [class.d-none]="!isLoadingCountries">
+          <i class="fas fa-circle-notch fa-spin m-2"></i>
+        </div>-->
+        <div class="row">
+          <div class="col"><span><h5 class="infectedCountryName mt-0 mb-1">District Name</h5></span></div>
+          <div class="col"><span><p class="infectedCountryDetails font-weight-bold"><span class="text-blue">Confirmed Cases</span></p></span></div>
         </div>
-        <div class="card-body">
-          <div class="container-fluid">
-            <a href="https://bit.ly/corona-tracker-india" target="_blank">
-              <img class="who-img img-fluid" src="../../../assets/img/icons/common/google_play.png">
-            </a>
-          </div>
+        <div class="infectedCountries">
+          <perfect-scrollbar #perfectscrollbar style="height:346px;">
+            <div class="infectedCountry" *ngFor="let country of test['Tamil Nadu'].districtData | keyvalue">
+              <div class="container">
+                <div class="row">
+                  <div class="col"><span><h5 class="infectedCountryName mt-0 mb-1">{{country.key}}</h5></span></div>
+                  <div class="col"><span><p class="infectedCountryDetails font-weight-bold"><span class="text-blue">{{country.value.confirmed}}</span></p></span></div>
+                </div>
+              </div>
+            </div>
+          </perfect-scrollbar>
+
+
         </div>
       </div>
     </div>

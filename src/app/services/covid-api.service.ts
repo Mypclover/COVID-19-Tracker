@@ -16,6 +16,7 @@ export class CovidApiService {
   baseUrl = 'https://corona.lmao.ninja/';
 
   private host = 'https://api.coronastatistics.live';
+  private covid19 = 'https://api.covid19india.org';
 
   constructor(private http: HttpClient) {
   }
@@ -92,6 +93,12 @@ export class CovidApiService {
   }
   getTimelineGlobal() {
     return this.http.get(`${this.host}/timeline/global`).pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+  getDistrictData() {
+    return this.http.get(`${this.covid19}/state_district_wise.json`).pipe(
       retry(1),
       catchError(this.handleError)
     );
