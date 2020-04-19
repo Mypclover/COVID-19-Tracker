@@ -13,7 +13,7 @@ import {TravelAlert} from '../modeles/travel-alert';
 })
 export class CovidApiService {
 
-  baseUrl = 'https://corona.lmao.ninja/';
+  baseUrl = 'https://corona.lmao.ninja/v2/';
 
   private host = 'https://api.coronastatistics.live';
   private covid19 = 'https://api.covid19india.org';
@@ -30,7 +30,7 @@ export class CovidApiService {
 
 
   getIndiaStatus() {
-    return this.http.get('https://corona.lmao.ninja/countries/india?strict=true').pipe(
+    return this.http.get('https://corona.lmao.ninja/v2/countries/India').pipe(
       retry(1),
       catchError(this.handleError)
     );
