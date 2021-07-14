@@ -16,7 +16,7 @@ export const ROUTES: RouteInfo[] = [
   {path: '/protect', title: 'How To Protect', icon: 'ni-favourite-28 text-red', class: ''},
   {path: '/help-line', title: 'Help Line', icon: 'ni-planet text-blue', class: ''},
   {path: '/test-center', title: 'Test centers', icon: 'ni-pin-3 text-orange', class: ''},
-  {path: '/faq', title: 'FAQ', icon: 'ni-support-16 text-purple', class: ''},
+  // {path: '/faq', title: 'FAQ', icon: 'ni-support-16 text-purple', class: ''},
   // {path: '/news', title: 'News', icon: 'ni-world-2 text-teal', class: ''},
 ];
 

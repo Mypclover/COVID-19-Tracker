@@ -12,11 +12,13 @@ import {TravelAlert} from '../modeles/travel-alert';
   providedIn: 'root'
 })
 export class CovidApiService {
-
+  timeStamp: any;
   baseUrl = 'https://corona.lmao.ninja/v2/';
 
   private host = 'https://api.coronastatistics.live';
   private covid19 = 'https://api.covid19india.org';
+
+  private mygov = 'https://www.mygov.in/sites/default/files/covid/vaccine/vaccine_counts_today.json?timestamp=1625790600';
 
   constructor(private http: HttpClient) {
   }
@@ -31,6 +33,24 @@ export class CovidApiService {
 
   getIndiaStatus() {
     return this.http.get('https://corona.lmao.ninja/v2/countries/India').pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  getTimeStamp() {
+    return this.http.get('http://api.coronatracker.com/timestamp').pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  getCovidVaccines() {
+   /* this.getTimeStamp().subscribe((res) => {
+      this.timeStamp = res;
+    });*/
+    // tslint:disable-next-line:max-line-length
+    return this.http.get('https://www.mygov.in/sites/default/files/covid/vaccine/vaccine_counts_today.json?timestamp=1625795547634').pipe(
       retry(1),
       catchError(this.handleError)
     );
@@ -65,7 +85,7 @@ export class CovidApiService {
     );
   }
 
-  getTravelAlert(): Observable<TravelAlert>  {
+  getTravelAlert(): Observable<TravelAlert> {
     return this.http.get<TravelAlert>('https://api.coronatracker.com/v1/travel-alert').pipe(
       retry(1),
       catchError(this.handleError)
@@ -78,6 +98,7 @@ export class CovidApiService {
       catchError(this.handleError)
     );
   }
+
   getCountry(name): Observable<Country> {
     return this.http.get<Country>(`${this.host}/countries/${name}`).pipe(
       retry(1),
@@ -91,12 +112,14 @@ export class CovidApiService {
       catchError(this.handleError)
     );
   }
+
   getTimelineGlobal() {
     return this.http.get(`${this.host}/timeline/global`).pipe(
       retry(1),
       catchError(this.handleError)
     );
   }
+
   getDistrictData() {
     return this.http.get(`${this.covid19}/state_district_wise.json`).pipe(
       retry(1),
@@ -113,7 +136,7 @@ export class CovidApiService {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    window.alert('Please check your internet connection!.');
+    // window.alert('Please inform Developer that API is Down !.');
     return throwError(errorMessage);
   }
 }

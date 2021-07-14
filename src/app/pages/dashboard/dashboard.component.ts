@@ -1,7 +1,7 @@
 import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 import {CovidApiService} from '../../services/covid-api.service';
 import {Globalupdate} from '../../modeles/globalupdate';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import {ModalDirective} from 'ngx-bootstrap/modal';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {PerfectScrollbarComponent} from 'ngx-perfect-scrollbar';
 import * as am4core from '@amcharts/amcharts4/core';
@@ -9,9 +9,8 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import * as am4maps from '@amcharts/amcharts4/maps';
 import am4geodata_worldLow from '@amcharts/amcharts4-geodata/worldLow';
-import { combineLatest } from 'rxjs';
-import * as Fuse from 'fuse.js';
-import { isUndefined } from 'util';
+import {isUndefined} from 'util';
+
 am4core.useTheme(am4themes_animated);
 
 @Component({
@@ -23,14 +22,14 @@ am4core.useTheme(am4themes_animated);
       state('in', style({opacity: 1})),
       transition(':enter', [
         style({opacity: 0}),
-        animate(600 )
+        animate(600)
       ])
     ])
   ]
 })
 export class DashboardComponent implements OnInit {
   @ViewChild(PerfectScrollbarComponent) public directiveScroll: PerfectScrollbarComponent;
-  @ViewChild('autoShownModal', { static: false }) autoShownModal: ModalDirective;
+  @ViewChild('autoShownModal', {static: false}) autoShownModal: ModalDirective;
   isModalShown = false;
   public modalStep = 1;
 
@@ -337,9 +336,11 @@ export class DashboardComponent implements OnInit {
   onHidden(): void {
     this.isModalShown = false;
   }
+
   nextStep() {
     this.modalStep += 1;
   }
+
   close(dontShow) {
     if (dontShow) {
       localStorage.setItem('dontShow', 'true');
@@ -377,48 +378,54 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.apiService.getTimeStamp().subscribe((timestamp) => {
+      console.log('====== timeStamp ====== ' + timestamp);
+    });
 
     if (!localStorage.getItem('dontShow')) {
       this.showModal();
     }
-
-    this.zone.runOutsideAngular(async () => {
-      combineLatest(
-        this.apiService.getAll(this.sortType),
-        this.apiService.getTimelineGlobal()
-      )
-        .subscribe(([getAllData, getTimelineData]) => {
-          this.isLoading = false;
-          this.isLoadingCountries = false;
-          this.isLoadingMap = false;
-          this.countries = getAllData;
-          this.totalCases = this.calculateSum('cases');
-          this.totalDeaths = this.calculateSum('deaths');
-          this.totalRecoveries = this.calculateSum('recovered');
-          this.totalCritical = this.calculateSum('critical');
-          this.todayCases = this.calculateSum('todayCases');
-          this.todayDeaths = this.calculateSum('todayDeaths');
-          this.activeCases = this.calculateSum('active');
-          this.casesPer1M = this.calculateSum('casesPerOneMillion');
-          this.finishedCases = this.totalDeaths + this.totalRecoveries;
-          this.fuse = new Fuse(this.countries, {
-            shouldSort: true,
-            threshold: 0.6,
-            location: 0,
-            distance: 100,
-            minMatchCharLength: 1,
-            keys: [
-              'country'
-            ]
-          });
-          this.timeLine = getTimelineData;
-          // this.loadLineChart(false);
-          // this.loadRadar();
-          this.loadPieChart();
-
-
-        });
+    this.apiService.getCovidVaccines().subscribe((res) => {
+      console.log('============ data ' + res);
     });
+
+    /* this.zone.runOutsideAngular(async () => {
+       combineLatest(
+         this.apiService.getAll(this.sortType),
+         this.apiService.getTimelineGlobal()
+       )
+         .subscribe(([getAllData, getTimelineData]) => {
+           this.isLoading = false;
+           this.isLoadingCountries = false;
+           this.isLoadingMap = false;
+           this.countries = getAllData;
+           this.totalCases = this.calculateSum('cases');
+           this.totalDeaths = this.calculateSum('deaths');
+           this.totalRecoveries = this.calculateSum('recovered');
+           this.totalCritical = this.calculateSum('critical');
+           this.todayCases = this.calculateSum('todayCases');
+           this.todayDeaths = this.calculateSum('todayDeaths');
+           this.activeCases = this.calculateSum('active');
+           this.casesPer1M = this.calculateSum('casesPerOneMillion');
+           this.finishedCases = this.totalDeaths + this.totalRecoveries;
+           this.fuse = new Fuse(this.countries, {
+             shouldSort: true,
+             threshold: 0.6,
+             location: 0,
+             distance: 100,
+             minMatchCharLength: 1,
+             keys: [
+               'country'
+             ]
+           });
+           this.timeLine = getTimelineData;
+           // this.loadLineChart(false);
+           // this.loadRadar();
+           this.loadPieChart();
+
+
+         });
+     });*/
 
     this.apiService.getLatestUpdate().subscribe((res) => {
       this.currentUpdate = res;
@@ -446,7 +453,9 @@ export class DashboardComponent implements OnInit {
   searchCountries(key) {
     if (key) {
       this.countries = this.fuse.search(key);
-      if (isUndefined(this.directiveScroll)) { return; }
+      if (isUndefined(this.directiveScroll)) {
+        return;
+      }
       this.directiveScroll.directiveRef.scrollToTop();
       return;
     }
@@ -513,9 +522,9 @@ export class DashboardComponent implements OnInit {
     let chart = am4core.create('lineChart', am4charts.XYChart);
     chart.numberFormatter.numberFormat = '#a';
     chart.numberFormatter.bigNumberPrefixes = [
-      { 'number': 1e+3, 'suffix': 'K' },
-      { 'number': 1e+6, 'suffix': 'M' },
-      { 'number': 1e+9, 'suffix': 'B' }
+      {'number': 1e+3, 'suffix': 'K'},
+      {'number': 1e+6, 'suffix': 'M'},
+      {'number': 1e+9, 'suffix': 'B'}
     ];
     // Create axes
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -653,7 +662,7 @@ export class DashboardComponent implements OnInit {
     chart.innerRadius = am4core.percent(20);
 
     // Set number format
-    chart.numberFormatter.numberFormat = "#.#'%'";
+    chart.numberFormatter.numberFormat = '#.#\'%\'';
 
     // Create axes
     let categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererRadial>());
@@ -704,7 +713,7 @@ export class DashboardComponent implements OnInit {
 
     series2.columns.template.adapter.add('fill', function (fill, target) {
       //return chart.colors.getIndex(target.dataItem.index);
-      if (target.dataItem.index === 0 ) {
+      if (target.dataItem.index === 0) {
         return am4core.color('#f9c851');
       }
       if (target.dataItem.index === 1) {
